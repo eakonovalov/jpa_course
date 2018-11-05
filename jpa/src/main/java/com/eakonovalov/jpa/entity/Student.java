@@ -3,9 +3,10 @@ package com.eakonovalov.jpa.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
-public class Course {
+public class Student {
 
     @Id
     @GeneratedValue
@@ -13,11 +14,14 @@ public class Course {
 
     private String name;
 
-    public Course() {
+    @OneToOne
+    private Passport passport;
+
+    public Student() {
 
     }
 
-    public Course(String name) {
+    public Student(String name) {
             this.name = name;
     }
 
@@ -37,9 +41,17 @@ public class Course {
         this.name = name;
     }
 
+    public Passport getPassport() {
+        return passport;
+    }
+
+    public void setPassport(Passport passport) {
+        this.passport = passport;
+    }
+
     @Override
     public String toString() {
-        return "Course{" +
+        return "Student{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';

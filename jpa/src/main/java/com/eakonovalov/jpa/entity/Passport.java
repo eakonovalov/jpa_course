@@ -5,20 +5,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Course {
+public class Passport {
 
     @Id
     @GeneratedValue
     private Long id;
 
-    private String name;
+    private String number;
 
-    public Course() {
+    public Passport() {
 
     }
 
-    public Course(String name) {
-            this.name = name;
+    public Passport(String number) {
+            this.number = number;
     }
 
     public Long getId() {
@@ -29,19 +29,19 @@ public class Course {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getNumber() {
+        return number;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNumber(String number) {
+        this.number = number;
     }
 
     @Override
     public String toString() {
-        return "Course{" +
+        return "Passport{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", number='" + number + '\'' +
                 '}';
     }
 }
