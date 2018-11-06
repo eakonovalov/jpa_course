@@ -1,8 +1,6 @@
 package com.eakonovalov.jpa.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Review {
@@ -15,12 +13,14 @@ public class Review {
 
     private String description;
 
-    public Review() {
+    @ManyToOne // ...ToOne fetched eagerly by default
+    private Course course;
 
+    public Review() {
     }
 
     public Review(String rating) {
-            this.rating = rating;
+        this.rating = rating;
     }
 
     public Long getId() {
@@ -45,6 +45,14 @@ public class Review {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
     }
 
     @Override

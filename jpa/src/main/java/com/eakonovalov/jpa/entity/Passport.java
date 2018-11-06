@@ -1,8 +1,6 @@
 package com.eakonovalov.jpa.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Passport {
@@ -13,12 +11,14 @@ public class Passport {
 
     private String number;
 
-    public Passport() {
+    @OneToOne(mappedBy = "passport") // ...ToOne fetched eagerly by default
+    private Student student;
 
+    public Passport() {
     }
 
     public Passport(String number) {
-            this.number = number;
+        this.number = number;
     }
 
     public Long getId() {
@@ -35,6 +35,14 @@ public class Passport {
 
     public void setNumber(String number) {
         this.number = number;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
     }
 
     @Override

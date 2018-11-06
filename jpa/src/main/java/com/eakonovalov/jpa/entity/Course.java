@@ -1,8 +1,8 @@
 package com.eakonovalov.jpa.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Course {
@@ -13,12 +13,14 @@ public class Course {
 
     private String name;
 
-    public Course() {
+    @OneToMany(mappedBy = "course") // ...ToMany fetched lazily by default
+    private List<Review> reviews = new ArrayList<>();
 
+    public Course() {
     }
 
     public Course(String name) {
-            this.name = name;
+        this.name = name;
     }
 
     public Long getId() {
@@ -35,6 +37,10 @@ public class Course {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
     }
 
     @Override

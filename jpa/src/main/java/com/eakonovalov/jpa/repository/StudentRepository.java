@@ -14,7 +14,7 @@ public class StudentRepository {
     @PersistenceContext
     private EntityManager em;
 
-    public Student finById(Long id) {
+    public Student findById(Long id) {
         return em.find(Student.class, id);
     }
 
@@ -30,7 +30,7 @@ public class StudentRepository {
     }
 
     public void deleteById(Long id) {
-        Student student = finById(id);
+        Student student = findById(id);
         em.remove(student);
     }
 

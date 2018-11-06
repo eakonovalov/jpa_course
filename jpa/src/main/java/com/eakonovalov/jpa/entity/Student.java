@@ -1,9 +1,6 @@
 package com.eakonovalov.jpa.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 public class Student {
@@ -14,15 +11,14 @@ public class Student {
 
     private String name;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY) // ...ToOne fetched eagerly by default
     private Passport passport;
 
     public Student() {
-
     }
 
     public Student(String name) {
-            this.name = name;
+        this.name = name;
     }
 
     public Long getId() {

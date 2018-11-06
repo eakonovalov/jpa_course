@@ -22,7 +22,7 @@ public class JpaApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        log.info(courseRepository.finById(10001L).toString());
+        log.info(courseRepository.findById(10001L).toString());
     }
 
 }
