@@ -1,6 +1,8 @@
 package com.eakonovalov.jpa.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Student {
@@ -13,6 +15,12 @@ public class Student {
 
     @OneToOne(fetch = FetchType.LAZY) // ...ToOne fetched eagerly by default
     private Passport passport;
+
+    @ManyToMany
+    @JoinTable(name = "STUDENT_COURSE",
+            joinColumns = @JoinColumn(name = "STUDENT_ID"),
+            inverseJoinColumns = @JoinColumn(name = "COURSE_ID"))
+    private List<Course> courses = new ArrayList<>();
 
     public Student() {
     }
@@ -45,11 +53,13 @@ public class Student {
         this.passport = passport;
     }
 
+    public List<Course> getCourses() {
+        return courses;
+    }
+
     @Override
     public String toString() {
-        return "Student{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+        return "Student{name='" + name + "'}";
     }
+
 }

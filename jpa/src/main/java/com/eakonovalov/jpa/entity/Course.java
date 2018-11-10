@@ -16,6 +16,9 @@ public class Course {
     @OneToMany(mappedBy = "course") // ...ToMany fetched lazily by default
     private List<Review> reviews = new ArrayList<>();
 
+    @ManyToMany(mappedBy = "courses")
+    private List<Student> students = new ArrayList<>();
+
     public Course() {
     }
 
@@ -43,11 +46,13 @@ public class Course {
         return reviews;
     }
 
+    public List<Student> getStudents() {
+        return students;
+    }
+
     @Override
     public String toString() {
-        return "Course{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+        return "Course{name='" + name + "'}";
     }
+
 }

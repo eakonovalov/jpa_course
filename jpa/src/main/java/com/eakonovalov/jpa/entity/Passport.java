@@ -47,9 +47,7 @@ public class Passport {
 
     @Override
     public String toString() {
-        return "Passport{" +
-                "id=" + id +
-                ", number='" + number + '\'' +
-                '}';
+        return "Passport{number='" + number + "'}";
     }
+
 }
