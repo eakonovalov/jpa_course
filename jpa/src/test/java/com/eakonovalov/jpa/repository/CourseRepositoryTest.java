@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -64,6 +65,13 @@ public class CourseRepositoryTest {
         Review review = em.find(Review.class, 30001L);
         Course course = review.getCourse();
         log.info("Course -> {}", course.getName());
+    }
+
+    @Test
+    public void retrieveCourseWithStudents() {
+        TypedQuery<Course> query = em.createNamedQuery("getCoursesWithStudents", Course.class);
+        List<Course> courses = query.getResultList();
+        log.info("courses -> {}", courses);
     }
 
 }

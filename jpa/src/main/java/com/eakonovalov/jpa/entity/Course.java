@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "getCoursesWithStudents", query = "from Course c join fetch c.students")
+})
 public class Course {
 
     @Id
